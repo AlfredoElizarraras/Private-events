@@ -1,1 +1,4 @@
 <h1>Welcome <%= current_user.username %></h1>
+<% current_user.events.each do |event| %>
+  <%= event.date%><br>
+<% end %>
