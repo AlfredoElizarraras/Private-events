@@ -1,18 +1,23 @@
 <h1>Welcome <%= current_user.username %></h1>
 
-<%= link_to  "Create a new event", new_event_path %>
+<div class="flex flex-column">
+  <div>Create a new event  <%= link_to "here", new_event_path %></div>
+  <div>See more awesome events <%= link_to "here", controller: 'events' %></div>
+</div>
 
 <div class="events">
   <div class="events-created">
-  <h3>
-    MY CREATED EVENTS
-  </h3>
+    <h3>
+      MY CREATED EVENTS
+    </h3>
+
     <%= user_created_events %>
   </div>
-    <div class="events-created">
-  <h3>
-    MY CREATED EVENTS
-  </h3>
+  <div class="events-created">
+    <h3>
+      EVENTS I'M GOING TO ATTEND
+    </h3>
+
     <%= user_created_events %>
   </div>
 </div>

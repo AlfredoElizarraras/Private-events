@@ -5,7 +5,6 @@
 .events {
   display: flex;
   justify-content: space-around;
-  align-items: start;
 }
 
 .events-created {
@@ -22,6 +21,7 @@
   align-items: center;
   flex-direction: column;
   padding: 2rem;
+  margin: 1.5rem;
   background-color: #673ab7;
   color: white;
   // border radius
@@ -36,4 +36,28 @@
   a {
     color: white;
   }
+}
+
+.flex {
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.jc-around {
+  justify-content: space-around;
+}
+
+.jc-between {
+  justify-content: space-between;
+}
+
+.jc-start {
+  justify-self: start;
+}
+
+.flex-column {
+  flex-direction: column;
 }
