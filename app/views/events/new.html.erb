@@ -14,6 +14,8 @@
 
 <%= form_for @event do |f| %>
    <%= f.label :date, value: 'Date: ' %>
-   <%= f.date_field :date, value: f.object.try(:strftime,"%d/%m/%Y") %><br><br>
+   <%= f.datetime_select :date,  prompt: {day: 'Day', month: 'Month', 
+                                          year: 'Year', hour: 'Hour', 
+                                          minute: 'Minute' } %><br><br>
    <%= f.submit "Create" %>
 <% end %>
