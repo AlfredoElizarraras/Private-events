@@ -3,9 +3,9 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .events {
-    display: flex;
-    justify-content: space-around;
-    align-items: start;
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
 }
 
 .events-created {
@@ -16,5 +16,24 @@
 }
 
 .event-card {
-    flex: 1;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: #673ab7;
+  color: white;
+  // border radius
+  border-radius: 58px 58px 58px 58px;
+  -moz-border-radius: 58px 58px 58px 58px;
+  -webkit-border-radius: 58px 58px 58px 58px;
+  border: 0px solid #000000;
+  // shadow
+  -webkit-box-shadow: -55px 29px 32px 1px rgba(133, 177, 230, 1);
+  -moz-box-shadow: -55px 29px 32px 1px rgba(133, 177, 230, 1);
+  box-shadow: -55px 29px 32px 1px rgba(133, 177, 230, 1);
+  a {
+    color: white;
+  }
 }
