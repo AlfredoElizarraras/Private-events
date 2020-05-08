@@ -13,7 +13,9 @@
 <% end %>
 
 <%= form_for @event do |f| %>
-   <%= f.label :date, value: 'Date: ' %>
+   <%= f.label :description, value: 'Description: ' %><br>
+   <%= f.text_area(:description, size: '70x2') %><br><br>
+   <%= f.label :date, value: 'Date: ' %><br>
    <%= f.datetime_select :date,  prompt: {day: 'Day', month: 'Month', 
                                           year: 'Year', hour: 'Hour', 
                                           minute: 'Minute' } %><br><br>
