@@ -16,8 +16,10 @@ ActiveRecord::Schema.define(version: 2020_05_08_224947) do
   enable_extension "plpgsql"
 
   create_table "attendances", force: :cascade do |t|
-    t.integer "attendee_id", null: false
-    t.integer "attended_event_id", null: false
+    t.bigint "attendee_id", null: false
+    t.bigint "attended_event_id", null: false
+    t.index ["attended_event_id"], name: "index_attendances_on_attended_event_id"
+    t.index ["attendee_id"], name: "index_attendances_on_attendee_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -34,4 +36,6 @@ ActiveRecord::Schema.define(version: 2020_05_08_224947) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "attendances", "events", column: "attended_event_id"
+  add_foreign_key "attendances", "users", column: "attendee_id"
 end
