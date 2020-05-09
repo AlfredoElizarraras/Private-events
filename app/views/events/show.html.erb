@@ -1,3 +1,7 @@
 <h1>
 This event is created by: <%= @event.creator.username %>
 </h1>
+
+<%= form_for(@event, url: events_attend_to_event_url, method: :post  ) do |f| %>
+   <%= f.submit "Attend" %>
+ <% end %>

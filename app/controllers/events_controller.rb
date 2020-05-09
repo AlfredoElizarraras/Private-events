@@ -24,4 +24,18 @@ class EventsController < ApplicationController
       render :new
     end
   end
+
+  def attend_to_event
+    @error = nil
+    @event = Event.find(params[:event][:id])
+    @attendance = @event.attendances.build( { attendee_id: current_user.id })
+    p '---------------here------------------'
+    if @attendance.save
+      p '...................saved.......................'
+      redirect_to @event
+    else
+      @error = "Could not save the event."
+      render :show
+    end
+  end
 end
