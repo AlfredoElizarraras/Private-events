@@ -13,6 +13,8 @@
 <% end %>
 
 <%= form_for @event do |f| %>
+   <%= f.label :description, value: 'Event description: '%>   
+   <%= f.text_field :description%>
    <%= f.label :date, value: 'Date: ' %>
    <%= f.date_field :date, value: f.object.try(:strftime,"%d/%m/%Y") %><br><br>
    <%= f.submit "Create" %>
