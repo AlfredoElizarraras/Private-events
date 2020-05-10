@@ -24,4 +24,14 @@ module EventsHelper
         end
         html_to_render.html_safe
     end
+
+    def attendees_list
+        html_to_render = ''
+        @attendees_list.each do |member|
+            html_to_render += '<article class="">'
+            html_to_render += "<a href=\"\\users\\#{member.id}\"> #{member.username} </a>"
+            html_to_render += '</article>'
+        end
+        html_to_render.html_safe
+    end
 end

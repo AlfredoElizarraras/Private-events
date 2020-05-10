@@ -6,3 +6,12 @@ This event is created by: <%= @event.creator.username %>
   <%= f.hidden_field :id %>
   <%= f.submit "Attend" %>
 <% end %>
+
+<div>
+  <h3>
+  Attendance members
+  </h3>
+  <div>
+    <%= attendees_list %>
+  </div>
+</div>
