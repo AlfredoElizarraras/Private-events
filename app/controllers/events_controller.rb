@@ -28,11 +28,7 @@ class EventsController < ApplicationController
 
   def attend_to_event
     @event = Event.add_new_attendee(params[:event][:id], current_user)
-    if @event.errors.nil?
-      redirect_to @event
-    else
-      @attendees_list = Event.attendees_members(params[:id])
-      render 'show'
-    end
+    flash[:error] = @event.errors.details[:register_already][0][:error][:message] if !@event.errors.nil?
+    redirect_to @event
   end
 end

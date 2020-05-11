@@ -2,11 +2,9 @@
 This event is created by: <%= @event.creator.username %>
 </h1>
 
-<% if @event.errors.any? %>
+<% if !flash[:error].nil? %>
  <div id="error_explanation">
-   <% @event.errors.details.each do |msg| %>
-      <strong><%= msg[1][0][:error][:message] %></strong>
-   <% end %>
+   <strong><%= flash[:error] %></strong>
  </div>
 <% end %>
 
