@@ -1,3 +1,8 @@
 <h1> <%= @event.description%> </h1>
 <p>Date:<%=@event.date%></p>
 <p>Created by: <%= @event.creator.username %></p>
+<h3>
+Attendees:
+</h3>
+
+<%= event_users_list %>
