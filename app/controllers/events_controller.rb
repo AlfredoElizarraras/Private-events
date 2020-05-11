@@ -27,8 +27,12 @@ class EventsController < ApplicationController
   end
 
   def attend_to_event
-    @event = Event.find(params[:event][:id])
-    @attendance = @event.attendees.push( current_user )
-    redirect_to @event
+    @event = Event.add_new_attendee(params[:event][:id], current_user)
+    if @event.errors.nil?
+      redirect_to @event
+    else
+      @attendees_list = Event.attendees_members(params[:id])
+      render 'show'
+    end
   end
 end

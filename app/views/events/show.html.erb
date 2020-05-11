@@ -2,6 +2,14 @@
 This event is created by: <%= @event.creator.username %>
 </h1>
 
+<% if @event.errors.any? %>
+ <div id="error_explanation">
+   <% @event.errors.details.each do |msg| %>
+      <strong><%= msg[1][0][:error][:message] %></strong>
+   <% end %>
+ </div>
+<% end %>
+
 <%= form_for(@event, url: events_attend_to_event_url, method: :post  ) do |f| %>
   <%= f.hidden_field :id %>
   <%= f.submit "Attend" %>
