@@ -13,8 +13,9 @@
           <%= link_to 'Sign in', users_sign_in_path%>
           <%= link_to 'Sign up', new_user_path%>
         <% else %>
-          <%= link_to 'Sign out', users_sign_out_path %>
-          <%= link_to 'My profile', current_user %>
+          <%= link_to 'Sign out', users_sign_out_path %> |
+          <%= link_to 'My profile', current_user %> |
+          <%= link_to 'Create a new event', new_event_path %>
         <% end %>
         <% if !flash[:error].nil? %>
            <div id="error_explanation">

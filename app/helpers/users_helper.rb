@@ -19,7 +19,17 @@ module UsersHelper
         @upcoming.count > 0 ? 'Upcoming: ' : 'No upcomming events'
     end
 
-    def which_user
-        !current_user.nil? && @user.id == current_user.id ? 'you' : @user.username
+   
+    def logged_user?(position)
+        case position
+        when 'title'
+            if !current_user.nil? && current_user.id == @user.id
+                "Welcome #{current_user.username}" 
+            else
+                "Profile of #{@user.username}"
+            end
+        when 'list'
+            !current_user.nil? && @user.id == current_user.id ? 'you' : @user.username
+        end
     end
 end

@@ -1,13 +1,8 @@
 
-<% if !current_user.nil? && current_user.id == @user.id %>
-  <h1>Welcome <%= current_user.username %></h1>
-  <%= link_to  "Create a new event", new_event_path %>
-<% else %>
-  <h1>Profile of <%= @user.username %></h1>
-<% end%>
+<h1><%=logged_user?('title') %></h1>
 
 <div> 
-  <h3>Events created by <%= which_user %></h3>
+  <h3>Events created by <%= logged_user?('list') %></h3>
   <h5><%= upcoming_created? %></h5>
   <ul>
   <% @upcoming_created.each do |event| %>
@@ -20,7 +15,7 @@
     <li><%= link_to event.description, event %> </li>
   <% end %>
   </ul>
-  <h3>Events attended by <%= which_user %></h3>
+  <h3>Events attended by <%= logged_user?('list') %></h3>
   <h5><%= upcoming? %></h5>
   <ul>
   <% @upcoming.each do |event| %>
