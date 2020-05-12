@@ -42,4 +42,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def sign_out
+    user_sign_out
+    redirect_to root_path
+  end
+
 end

@@ -1,20 +1,3 @@
 <h1>List of events</h1>
-<h3><%= upcoming_events? %></h3>
-<ul>
-  <% @upcoming.each do |event| %>
-    <li>
-    <%= link_to  event.description, event_path(event) %>
-    <span><%= event.date.strftime("Event's day on %m/%d/%Y at %H:%M") %></span>
-    </li>
-  <% end %>
-</ul>
-
-<h3><%= previous_events? %></h3>
-<ul>
-  <% @previous.each do |event| %>
-    <li>
-    <%= link_to  event.description, event_path(event) %>
-    <span><%= event.date.strftime("Event's day was on %m/%d/%Y at %H:%M") %></span>
-    </li>
-  <% end %>
-</ul>
+<%= render 'upcoming'%>
+<%= render 'previous'%>
