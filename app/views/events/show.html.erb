@@ -2,12 +2,6 @@
 <p>Date:<%=@event.date%></p>
 <p>Created by: <%= @event.creator.username %></p>
 
-<% if !flash[:error].nil? %>
- <div id="error_explanation">
-   <strong><%= flash[:error] %></strong>
- </div>
-<% end %>
-
 <%= form_for(@event, url: events_attend_to_event_url, method: :post  ) do |f| %>
   <%= f.hidden_field :id %>
   <%= f.submit "Attend" %>

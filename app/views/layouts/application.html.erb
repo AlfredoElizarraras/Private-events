@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>PrivateEvents</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-  <%= link_to 'Home', root_path%>
-  <% if session[:user].nil? %>
-  <%= link_to 'Sign in', users_sign_in_path%>
-  <%= link_to 'Sign up', new_user_path%>
-  <% else %>
-  <%= link_to 'Sign out', users_sign_out_path %>
-  <% end %%>
-    <%= yield %>
-  </body>
-</html>
+    <html>
+      <head>
+        <title>PrivateEvents</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+      </head>
+      <body>
+        <%= link_to 'Home', root_path%>
+        <% if session[:user].nil? %>
+          <%= link_to 'Sign in', users_sign_in_path%>
+          <%= link_to 'Sign up', new_user_path%>
+        <% else %>
+          <%= link_to 'Sign out', users_sign_out_path %>
+        <% end %>
+        <% if !flash[:error].nil? %>
+           <div id="error_explanation">
+             <strong><%= flash[:error] %></strong>
+           </div>
+       <% end %>
+        <%= yield %>
+      </body>
+    </html>

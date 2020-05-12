@@ -28,11 +28,17 @@ class EventsController < ApplicationController
   end
 
   def attend_to_event
-    @event = Event.find(params[:event][:id])
-    @event.add_new_attendee(current_user)
-    if @event.errors.any?
-      flash[:error] = @event.errors.details[:register_already][0][:error][:message] 
+    if current_user.nil?
+      flash[:error] = 'You need to sign in or sign up to register to this event'
+      visited_event_set(params[:event][:id])
+      redirect_to users_sign_in_path
+    else
+      @event = Event.find(params[:event][:id])
+      @event.add_new_attendee(current_user)
+      if @event.errors.any?
+        flash[:error] = @event.errors.details[:register_already][0][:error][:message] 
+      end
+      redirect_to @event
     end
-    redirect_to @event
   end
 end

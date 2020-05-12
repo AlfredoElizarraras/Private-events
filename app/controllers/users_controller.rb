@@ -18,7 +18,12 @@ class UsersController < ApplicationController
 
     if @user.save
       current_user_set(@user.id)
-      redirect_to current_user
+      if visited_event.nil?
+        redirect_to current_user
+      else
+        redirect_to visited_event
+        visited_event_clear
+      end
     else
       render :new
     end
@@ -34,7 +39,12 @@ class UsersController < ApplicationController
 
     if @user.nil? == false
       current_user_set(@user.id)
-      redirect_to current_user
+      if visited_event.nil?
+        redirect_to current_user
+      else
+        redirect_to visited_event
+        visited_event_clear
+      end
     else
       @error = "Could not find the user."
       @user = User.new( { username: params[:user][:username] } )
