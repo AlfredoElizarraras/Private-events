@@ -1,6 +1,6 @@
 <h1> <%= @event.description%> </h1>
 <p>Date:<%=@event.date%></p>
-<p>Created by: <%= @event.creator.username %></p>
+<p>Created by: <%= link_to @event.creator.username, @event.creator %></p>
 
 <%= form_for(@event, url: events_attend_to_event_url, method: :post  ) do |f| %>
   <%= f.hidden_field :id %>
@@ -14,7 +14,7 @@
 <ul>
   <% @attendees_members.each do |attendee| %>
     <li>
-      <%= attendee.username %>
+      <%= link_to attendee.username, user_path(attendee) %>
     </li>
   <% end %>
 </ul>

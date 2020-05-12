@@ -3,10 +3,11 @@ class UsersController < ApplicationController
   include ApplicationHelper
 
   def show
-    @previous = current_user.past_events
-    @upcoming = current_user.upcoming_events 
-    @previous_created = current_user.past_created_events
-    @upcoming_created = current_user.upcoming_created_events 
+    @user = User.find(params[:id])
+    @previous = @user.past_events
+    @upcoming = @user.upcoming_events 
+    @previous_created = @user.past_created_events
+    @upcoming_created = @user.upcoming_created_events 
   end
 
   def new

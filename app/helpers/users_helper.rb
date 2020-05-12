@@ -3,7 +3,6 @@ module UsersHelper
         params.require(:user).permit(:username)
     end
 
-
     def previous_created?
         @previous_created.count > 0 ? 'Previous: ' : 'No previous events'
     end
@@ -18,5 +17,9 @@ module UsersHelper
     
     def upcoming?
         @upcoming.count > 0 ? 'Upcoming: ' : 'No upcomming events'
+    end
+
+    def which_user
+        !current_user.nil? && @user.id == current_user.id ? 'you' : @user.username
     end
 end
