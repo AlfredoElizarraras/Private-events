@@ -4,19 +4,19 @@ class User < ApplicationRecord
   has_many :attended_events, through: :attendances, class_name: 'Event'
 
   def upcoming_events
-    attended_events.where('date >= ?', Date.today )
+    attended_events.where('date >= ?', Date.today  ).order('date asc')
   end 
 
   def past_events
-    attended_events.where('date < ?', Date.today )
+    attended_events.where('date < ?', Date.today ).order('date desc')
   end 
 
   def upcoming_created_events
-    events.where('date >= ?', Date.today )
+    events.where('date >= ?', Date.today ).order('date asc')
   end
 
   def past_created_events
-    events.where('date < ?', Date.today )
+    events.where('date < ?', Date.today ).order('date desc')
   end 
 
 

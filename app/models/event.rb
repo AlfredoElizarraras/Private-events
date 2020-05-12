@@ -3,8 +3,8 @@ class Event < ApplicationRecord
   has_many :attendances, foreign_key: :attended_event_id, dependent: :destroy
   has_many :attendees, through: :attendances, source: :attendee
 
-  scope :upcoming_events, -> { where(' date >= now()') }
-  scope :previous_events, -> { where(' date < now()') }
+  scope :upcoming_events, -> { where(' date >= now()').order('date asc') }
+  scope :previous_events, -> { where(' date < now()').order('date desc') }
 
   def attendees_members
     attendees.order('attendances.created_at desc')
