@@ -3,22 +3,16 @@ module EventsHelper
         params.require(:event).permit(:date, :description )
     end
 
-    def events_list
-        html_to_render = '<ul>'
-        @events.each do |event|
-            html_to_render += "<li> <a href= '/events/#{event.id}'>#{event.description}</a></li>"
-        end
-        html_to_render += '</ul>'
-        html_to_render.html_safe
+    def have_attendees?
+       @event.attendees.count > 0 ? 'Attendees: ' : 'This event have not attendees yet'
     end
 
-    def event_users_list
-        html_to_render = '<ul>'
-        @event.attendees.each do |user|
-            html_to_render += "<li> #{user.username} </li>"
-        end
-        html_to_render += '</ul>'
-        html_to_render.html_safe
+    def upcoming_events?
+        @upcoming.count > 0 ? 'Upcoming Events:' : 'No upcoming events yet'
+    end
+
+    def previous_events?
+        @previous.count > 0 ? 'Previous Events:' : 'No previous events'
     end
 
 end

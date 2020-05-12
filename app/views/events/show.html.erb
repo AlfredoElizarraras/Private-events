@@ -2,7 +2,13 @@
 <p>Date:<%=@event.date%></p>
 <p>Created by: <%= @event.creator.username %></p>
 <h3>
-Attendees:
+<%= have_attendees? %>
 </h3>
 
-<%= event_users_list %>
+<ul>
+  <% @attendees_members.each do |attendee| %>
+    <li>
+      <%= attendee.username %>
+    </li>
+  <% end %>
+</ul>
