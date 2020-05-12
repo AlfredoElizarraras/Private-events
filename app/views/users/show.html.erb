@@ -3,10 +3,37 @@
 <%= link_to  "Create a new event", new_event_path %>
 
 <div> 
-  <%= user_created_events %>
+  <h3>Events created by you</h3>
+  <h5><%= upcoming_created? %></h5>
+  <ul>
+  <% @upcoming_created.each do |event| %>
+    <li><%= event.description %> </li>
+  <% end %>
+  </ul>
+  <h5><%= previous_created? %></h5>
+  <ul>
+  <% @previous_created.each do |event| %>
+    <li><%= event.description %> </li>
+  <% end %>
+  </ul>
+  <h3>Events attended by you</h3>
+  <h5><%= upcoming? %></h5>
+  <ul>
+  <% @upcoming.each do |event| %>
+    <li><%= event.description %> </li>
+  <% end %>
+  </ul>
+  <h5><%= previous? %></h5>
+ <ul>
+  <% @previous.each do |event| %>
+    <li><%= event.description %> </li>
+  <% end %>
+  </ul>
+ 
+
 </div>
 <div>
-<%= events_attended%>
+<%#= events_attended%>
 </div>
 
 <div>See more awesome events 
