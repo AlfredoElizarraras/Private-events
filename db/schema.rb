@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_05_13_200132) do
     t.string "description"
     t.string "title", null: false
     t.string "location"
-    t.boolean "accesibility", default: true, null: false
+    t.boolean "accessibility", default: false, null: false
   end
 
   create_table "invitations", force: :cascade do |t|

@@ -1,6 +1,6 @@
 module EventsHelper
     def event_params
-        params.require(:event).permit(:date, :description )
+        params.require(:event).permit(:date, :description, :title, :location, :accessibility )
     end
 
     def have_attendees?
@@ -13,6 +13,10 @@ module EventsHelper
 
     def previous_events?
         @previous.count > 0 ? 'Previous Events:' : 'No previous events'
+    end
+
+    def public_event?
+        @event.accessibility ? 'Public' : 'Private'
     end
 
 end

@@ -6,26 +6,26 @@
   <h5><%= upcoming_created? %></h5>
   <ul>
   <% @upcoming_created.each do |event| %>
-    <li><%= link_to event.description, event %> </li>
+    <li><%= link_to event.title, event %> </li>
   <% end %>
   </ul>
   <h5><%= previous_created? %></h5>
   <ul>
   <% @previous_created.each do |event| %>
-    <li><%= link_to event.description, event %> </li>
+    <li><%= link_to event.title, event %> </li>
   <% end %>
   </ul>
   <h3>Events attended by <%= logged_user?('list') %></h3>
   <h5><%= upcoming? %></h5>
   <ul>
   <% @upcoming.each do |event| %>
-    <li><%= link_to event.description, event %> </li>
+    <li><%= link_to event.title, event %> </li>
   <% end %>
   </ul>
   <h5><%= previous? %></h5>
  <ul>
   <% @previous.each do |event| %>
-    <li><%= link_to event.description, event %> </li>
+    <li><%= link_to event.title, event %> </li>
   <% end %>
   </ul>
  
