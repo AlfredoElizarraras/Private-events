@@ -4,6 +4,12 @@ class User < ApplicationRecord
   has_many :attended_events, through: :attendances, class_name: 'Event'
   validates :username, presence: true 
 
+  has_many :invitations, foreign_key: :host_id, dependent: :destroy
+  has_many :invitations, foreign_key: :invitee_id, dependent: :destroy
+  
+  has_many :invitees, through: :invitations, class_name: 'User'
+  has_many :hosts, through: :invitations, source: :host
+
   def upcoming_events
     attended_events.where('date >= ?', Date.today  ).order('date asc')
   end 
