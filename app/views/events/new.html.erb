@@ -20,8 +20,7 @@
    <%= f.label :location, value: 'Location: '%>
    <%= f.text_field :location %><br>
    <%= f.label :date, value: 'Date: ' %>
-   <%= f.datetime_select :date, default: { year: Date.today.year, month: Date.today.month, 
-                                            day: Date.today.day} %><br>
+   <%= f.date_field :date, min: Date.new(2000, 01, 01), max: Date.new(2050, 12, 31) %><br>
    <%= f.label :accessibility, value: 'Make this event private: '%>
    <%= f.check_box :accessibility %><br><br>
    <%= f.submit "Create" %>

@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   has_many :attendances, foreign_key: :attended_event_id, dependent: :destroy
   has_many :attendees, through: :attendances, source: :attendee
   has_many :invitations
+  validates :title, :date, presence: true
 
   scope :upcoming_events, -> { where(' date >= now()').order('date asc') }
   scope :previous_events, -> { where(' date < now()').order('date desc') }
