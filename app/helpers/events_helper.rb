@@ -16,7 +16,6 @@ module EventsHelper
     end
 
     def public_event?
-        @event.accessibility ? 'Public' : 'Private'
+        @event.accessibility ? 'Private' : 'Public'
     end
-
 end

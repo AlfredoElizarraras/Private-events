@@ -4,7 +4,7 @@
 <p>Date:<%=@event.date%></p>
 <p>Location: <%= @event.location %></p>
 <h4>Created by: <%= link_to @event.creator.username, @event.creator %></h4>
-
+<p>This event is: <%= public_event? %></p>
 <%= form_for(@event, url: events_attend_to_event_url, method: :post  ) do |f| %>
   <%= f.hidden_field :id %>
   <%= f.submit "Attend" %>
