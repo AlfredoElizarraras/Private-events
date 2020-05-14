@@ -5,8 +5,26 @@ class Event < ApplicationRecord
   has_many :invitations
   validates :title, :date, presence: true
 
-  scope :upcoming_events, -> { where(' date >= now()').order('date asc') }
-  scope :previous_events, -> { where(' date < now()').order('date desc') }
+  scope :upcoming_events, -> (user = nil) do 
+    if user.nil?
+      where(accessibility: false)
+      .where(' date >= now()').order('date asc')
+    else
+      where(' date >= now()').order('date asc')
+      .left_joins(:invitations)
+      .where('events.accessibility = ? or events.creator_id = ? or invitations.invitee_id = ?', false,user.id, user.id)
+    end
+  end
+  scope :previous_events, -> (user = nil) do
+    if user.nil?
+      where(accessibility: false)
+      .where(' date < now()').order('date desc')
+    else
+      where(' date < now()').order('date desc')
+      .left_joins(:invitations)
+      .where('events.accessibility = ? or events.creator_id = ? or invitations.invitee_id = ?', false,user.id, user.id)
+    end
+  end
 
   def attendees_members
     attendees.order('attendances.created_at desc')

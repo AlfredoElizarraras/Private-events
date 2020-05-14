@@ -4,8 +4,8 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-    @upcoming = Event.upcoming_events
-    @previous = Event.previous_events
+    @upcoming = current_user.nil? ? Event.upcoming_events : Event.upcoming_events(current_user)
+    @previous = current_user.nil? ? Event.previous_events : Event.previous_events(current_user)
   end
 
   def show
