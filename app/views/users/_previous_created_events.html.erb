@@ -1,0 +1,8 @@
+  <h5><%= previous_created? %></h5>
+  <% unless @previous_created.count.zero? %>
+    <ul>
+    <% @previous_created.each do |event| %>
+      <li><%= link_to event.title, event %> </li>
+    <% end %>
+    </ul>
+  <% end %>

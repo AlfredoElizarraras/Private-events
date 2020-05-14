@@ -1,0 +1,8 @@
+  <h5><%= upcoming? %></h5>
+  <% unless @upcoming.count.zero? %>
+    <ul>
+    <% @upcoming.each do |event| %>
+      <li><%= link_to event.title, event %> </li>
+    <% end %>
+    </ul>
+  <% end %>
