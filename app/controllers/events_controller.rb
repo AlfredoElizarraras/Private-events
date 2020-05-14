@@ -19,7 +19,11 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
-
+    @event.date = DateTime.new(@event.date.year,
+                                 @event.date.month,
+                                 @event.date.day,
+                                 params[:date_time].to_s.split(':')[0].to_i,
+                                 params[:date_time].to_s.split(':')[1].to_i,0)
     if @event.save
       redirect_to current_user
     else
