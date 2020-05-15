@@ -21,3 +21,14 @@
     </li>
   <% end %>
 </ul>
+
+<%if current_user.id == @event.creator.id %>
+  <h4>People to invite</h4>
+  <ul>
+  <% @uninvited_people.each do |user| %>
+    <li>
+      <%= link_to user.username, user_path(user)%>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

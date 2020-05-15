@@ -15,6 +15,7 @@ class Event < ApplicationRecord
       .where('events.accessibility = ? or events.creator_id = ? or invitations.invitee_id = ?', false,user.id, user.id)
     end
   end
+
   scope :previous_events, -> (user = nil) do
     if user.nil?
       where(accessibility: false)

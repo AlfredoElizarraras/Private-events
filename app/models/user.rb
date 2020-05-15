@@ -9,7 +9,11 @@ class User < ApplicationRecord
   
   has_many :invitations_invitees, foreign_key: :host_id, class_name: 'Invitation', dependent: :destroy
   has_many :invitees, through: :invitations_invitees, source: :invitee
-  
+
+  scope :uninvited_users, -> (event) do
+    where.not(id: Invitation.select(:invitee_id).where(event_id: event.id))
+    .where('id != ?', event.creator.id)
+  end
 
   def upcoming_events
     attended_events.where('date >= ?', Date.today  ).order('date asc')
