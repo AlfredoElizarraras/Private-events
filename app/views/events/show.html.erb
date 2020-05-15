@@ -27,7 +27,9 @@
   <ul>
   <% @uninvited_people.each do |user| %>
     <li>
-      <%= link_to user.username, user_path(user)%>
+      <%= link_to user.username + '\'s profile', user_path(user) %> 
+      <%= link_to 'invite', events_invite_to_event_path(event: @event.id, invitee: user.id ),
+          method: :invite_to_event, data: {confirm: "Invite #{user.username}?"} %>
     </li>
   <% end %>
   </ul>

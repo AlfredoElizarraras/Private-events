@@ -46,4 +46,14 @@ class EventsController < ApplicationController
       redirect_to @event
     end
   end
+
+  def invite_to_event
+    @event = Event.find(params[:event])
+    invitee_id = params[:invitee].to_i
+    if Event.add_new_invitation(@event,invitee_id)
+      redirect_to @event 
+    else
+      render :show
+    end
+  end
 end
