@@ -33,7 +33,7 @@ class Event < ApplicationRecord
 
   def add_new_attendee(user)
     attendance = attendees.push(user)
-    
+    if_invitation_update(user)
   rescue ActiveRecord::RecordNotUnique => e
     errors.add(:register_already, message: 'You are already attending this event!')
   end
@@ -45,6 +45,15 @@ class Event < ApplicationRecord
     invitation.invitee_id = invitee_id
     invitation.status = 'pending'
     invitation.save
+  end
+
+  private
+
+  def if_invitation_update(user)
+    invitation = Invitation.where(event_id: id, invitee_id: user.id).first
+    unless invitation.nil?
+      invitation.update(status: 'accepted')
+    end 
   end
 
 end
