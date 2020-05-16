@@ -18,4 +18,10 @@ module EventsHelper
     def public_event?
         @event.accessibility ? 'Private' : 'Public'
     end
+
+    def can_see_event?
+      redirect = current_user.nil?
+      return !redirect if redirect
+      return current_user.id == @event.creator_id || @event.user_in_inveted_list?(current_user.id) unless redirect
+    end
 end

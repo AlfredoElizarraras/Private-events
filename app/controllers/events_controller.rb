@@ -10,6 +10,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    redirect_to root_path if !can_see_event?
     @attendees_members = @event.attendees_members
     @uninvited_people = User.uninvited_users(@event)
   end

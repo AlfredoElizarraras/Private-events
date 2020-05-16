@@ -47,6 +47,11 @@ class Event < ApplicationRecord
     invitation.save
   end
 
+  def user_in_inveted_list?(user_id)
+    invited = invitations.where(invitee_id: user_id).first
+    invited.nil? ? false : true
+  end
+
   private
 
   def if_invitation_update(user)
