@@ -52,6 +52,14 @@ class Event < ApplicationRecord
     invited.nil? ? false : true
   end
 
+
+  def set_status_to_declined(invitee_id)
+    invitation = Invitation.where(event_id: id, invitee_id: invitee_id).first
+    unless invitation.nil?
+      invitation.update(status: 'declined')
+    end 
+  end
+
   private
 
   def if_invitation_update(user)

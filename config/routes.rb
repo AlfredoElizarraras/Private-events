@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   post 'events/invite_to_event'
   get 'users/notifications'
   post 'users/attend_event'
+  post 'users/decline_invitation'
   resources :users, only:  [:show, :new, :create, :sign_in, 
                             :logging, :sign_out, :notifications, 
-                            :attend_event]
+                            :attend_event, :decline_invitation]
   resources :events, only: [:index, :show, :new, :create, :attend_to_event, :invite_to_event]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

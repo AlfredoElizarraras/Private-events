@@ -69,4 +69,12 @@ class UsersController < ApplicationController
     redirect_to users_notifications_path
   end
 
+  def decline_invitation
+    event = current_user.invitation_hosts
+    .where(host_id: params[:host_id])
+    .where(event_id: params[:event_id]).first.event
+    decline_registration(event)
+    redirect_to users_notifications_path
+  end
+
 end

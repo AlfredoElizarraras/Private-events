@@ -9,6 +9,11 @@
     data: { 
         confirm: "Sure to attend #{invitation.event.title}"
     } %>
+    <%= link_to 'Decline', users_decline_invitation_path(event_id: invitation.event.id, host_id: invitation.event.creator.id), method: :decline_invitation,
+    data: { 
+        confirm: "Sure to decline #{invitation.event.title}"
+    } %>
+
     </li>
 <% end %>
 </ul> 
