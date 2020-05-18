@@ -15,7 +15,8 @@
         <% else %>
           <%= link_to 'Sign out', users_sign_out_path %> |
           <%= link_to current_user.username, current_user %> |
-          <%= link_to 'Create a new event', new_event_path %>
+          <%= link_to 'Create a new event', new_event_path %> |
+          <%= link_to  "Notifications (#{current_user.pending_invitations_count})", users_notifications_path %>
         <% end %>
         <% if !flash[:error].nil? %>
            <div id="error_explanation">

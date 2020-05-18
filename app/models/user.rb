@@ -16,19 +16,29 @@ class User < ApplicationRecord
   end
 
   def upcoming_events
-    attended_events.where('date >= ?', Date.today  ).order('date asc')
+    attended_events.where('date >= now()'  ).order('date asc')
   end 
 
   def past_events
-    attended_events.where('date < ?', Date.today ).order('date desc')
+    attended_events.where('date < now()' ).order('date desc')
   end 
 
   def upcoming_created_events
-    events.where('date >= ?', Date.today ).order('date asc')
+    events.where('date >= now()' ).order('date asc')
   end
 
   def past_created_events
-    events.where('date < ?', Date.today ).order('date desc')
-  end 
+    events.where('date < now()' ).order('date desc')
+  end
+
+  def pending_invitations
+    invitation_hosts.where(status: 'pending')
+    .where('invitations.created_at >= DATE(now())').order('invitations.created_at asc')
+  end
+
+  def pending_invitations_count
+    invitation_hosts.where(status: 'pending')
+    .where('invitations.created_at >= DATE(now())').count
+  end
 
 end

@@ -40,7 +40,7 @@ class EventsController < ApplicationController
       redirect_to users_sign_in_path
     else
       @event = Event.find(params[:event][:id])
-      @event.add_new_attendee(current_user)
+      register_to_event(@event)
       if @event.errors.any?
         flash[:error] = @event.errors.details[:register_already][0][:error][:message] 
       end

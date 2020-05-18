@@ -1,0 +1,14 @@
+<h1>Your pending events invitations</h1>
+
+<ul>
+<% @pending.each do |invitation| %>
+    <li>
+    <%= link_to  invitation.event.title, invitation.event %>
+    from <%= link_to  invitation.event.creator.username, invitation.event.creator %> - 
+    <%= link_to 'Accept', users_attend_event_path(event_id: invitation.event.id, host_id: invitation.event.creator.id), method: :attend_event,
+    data: { 
+        confirm: "Sure to attend #{invitation.event.title}"
+    } %>
+    </li>
+<% end %>
+</ul> 

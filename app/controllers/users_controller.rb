@@ -57,4 +57,16 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def notifications
+    @pending = current_user.pending_invitations
+  end
+
+  def attend_event
+    event = current_user.invitation_hosts
+    .where(host_id: params[:host_id])
+    .where(event_id: params[:event_id]).first.event
+    register_to_event(event)
+    redirect_to users_notifications_path
+  end
+
 end
