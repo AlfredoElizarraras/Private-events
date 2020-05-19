@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   end
 
   def notifications
-    @pending = current_user.pending_invitations
+    @pending = Invitation.pending_invitations(current_user.id)
   end
 
   def attend_event

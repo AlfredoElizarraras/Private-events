@@ -3,15 +3,16 @@
 <ul>
 <% @pending.each do |invitation| %>
     <li>
-    <%= link_to  invitation.event.title, invitation.event %>
-    from <%= link_to  invitation.event.creator.username, invitation.event.creator %> - 
-    <%= link_to 'Accept', users_attend_event_path(event_id: invitation.event.id, host_id: invitation.event.creator.id), method: :attend_event,
+    <% id = invitation.event_id %>
+    <%= link_to  invitation.title, event_path(id) %>
+    from <%= link_to  invitation.creator, user_path(invitation.creator_id) %> - 
+    <%= link_to 'Accept', users_attend_event_path(event_id: invitation.event_id, host_id: invitation.creator_id), method: :attend_event,
     data: { 
-        confirm: "Sure to attend #{invitation.event.title}"
+        confirm: "Sure to attend #{invitation.title}"
     } %>
-    <%= link_to 'Decline', users_decline_invitation_path(event_id: invitation.event.id, host_id: invitation.event.creator.id), method: :decline_invitation,
+    <%= link_to 'Decline', users_decline_invitation_path(event_id: invitation.event_id, host_id: invitation.creator_id), method: :decline_invitation,
     data: { 
-        confirm: "Sure to decline #{invitation.event.title}"
+        confirm: "Sure to decline #{invitation.title}"
     } %>
 
     </li>
