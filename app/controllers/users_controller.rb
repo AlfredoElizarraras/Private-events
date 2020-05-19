@@ -15,20 +15,23 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    result = CreateUser.call(user_params: user_params)
 
-    if @user.save
-      current_user_set(@user.id)
+    if result.success?
+      current_user_set(result.user.id )
       if visited_event.nil?
         redirect_to current_user
       else
         redirect_to visited_event
         visited_event_clear
       end
+
     else
+      flash.now[:message] = t(result.message)
       render :new
     end
   end
+
 
   def sign_in
     @user = User.new
