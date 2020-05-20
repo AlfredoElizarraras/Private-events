@@ -42,7 +42,7 @@ class EventsController < ApplicationController
       @event = Event.find(params[:event][:id])
       register_to_event(@event)
       if @event.errors.any?
-        flash[:error] = @event.errors.details[:register_already][0][:error][:message] 
+        flash[:error] = @event.errors.full_messages 
       end
       redirect_to @event
     end

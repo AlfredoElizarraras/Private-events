@@ -4,7 +4,7 @@ class Event < ApplicationRecord
   has_many :attendees, through: :attendances, source: :attendee
   has_many :invitations
   validates :title, :date, presence: true
-
+  
   scope :upcoming_events, -> (user = nil) do 
     if user.nil?
       where(accessibility: false)
@@ -35,7 +35,7 @@ class Event < ApplicationRecord
     attendance = attendees.push(user)
     if_invitation_update(user)
   rescue ActiveRecord::RecordNotUnique => e
-    errors.add(:register_already, message: 'You are already attending this event!')
+    errors.add(:attendees,:register_already, message: " #{user.username} you are already attending this event!")
   end
 
   def self.add_new_invitation(event,invitee_id)

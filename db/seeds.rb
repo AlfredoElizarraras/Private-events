@@ -8,7 +8,7 @@
 u = User.new( { username: 'Mainuser' })
 u.save
 
-500.times do |index|
+10.times do |index|
     u2 = User.new( { username: "User #{index + 2}" })
     u2.save
     e = Event.new( { title: "Private Event #{index + 2}",

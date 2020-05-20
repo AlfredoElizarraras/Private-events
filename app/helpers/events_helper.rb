@@ -25,7 +25,7 @@ module EventsHelper
 
       else
         if current_user.id == @event.creator_id ||
-            @event.user_in_invited_list?(current_user.id)
+            @event.user_in_invited_list?(current_user.id) || !@event.accessibility
             return true
         end
       end
