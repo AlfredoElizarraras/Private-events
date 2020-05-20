@@ -2,11 +2,12 @@ class CreateUser
   include Interactor
 
   def call
-    user = User.create(context.user_params)
+    user = User.new(context.user_params)
 
-    if user.persisted?
+    if user.save
       context.user = user
     else
+      context.message = user.errors.full_messages
       context.fails!
     end
   end

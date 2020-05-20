@@ -1,30 +1,27 @@
 require 'spec_helper'
 
 RSpec.describe CreateUser, type: :interactor do
-  subject(:instance) { CreateUser.new }
-  let (:result) { nil }
+  subject(:instance) { CreateUser.call(user_params: {username: 'john'}) }
+  subject(:instance_1) { CreateUser.call(user_params: {username: ''}) }
   describe '.call' do
-    context "when given a valid username" do
-      
-      #let(:user) { User.create() }
-
-      before do
-        #allow(User).to receive(:create).with("johnsmith").and_return(user)
-        result =  CreateUser.call(user_params: {username: 'johnsmith'})
+    context "When given a valid new username."do
+      it "Succeeds" do
+        expect(instance).to be_a_success
       end
 
-      it "adds a user " do 
-        expect { CreateUser.call(user_params: "johnsmith") }.to change{ User.count }.by(1)
+      it "Provides the user" do
+        expect(instance.user.username).to eq('john')
       end
-      it "succeeds" do
-        expect(result.context).to be_a_success
+    end
+
+    context "When the username is blank or nil." do
+      it 'Fails' do
+        expect(instance_1.user).to be_nil
       end
 
-      it "provides the user" do
-        p '*******************'
-        expect(result.context.user.username).to eq('johnsmith')
+      it "Provides a failure message" do
+        expect(instance_1.message).to be_present
       end
-
     end
   end
 end

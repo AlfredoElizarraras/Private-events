@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def create
     result = CreateUser.call(user_params: user_params)
 
-    if result.success?
+    if !result.user.nil?
       current_user_set(result.user.id )
       if visited_event.nil?
         redirect_to current_user
@@ -25,13 +25,12 @@ class UsersController < ApplicationController
         redirect_to visited_event
         visited_event_clear
       end
-
     else
-      flash.now[:message] = t(result.message)
-      render :new
+      flash.now[:error] = result.message
+      @user = User.new
+      render 'new'
     end
   end
-
 
   def sign_in
     @user = User.new
@@ -49,7 +48,7 @@ class UsersController < ApplicationController
         visited_event_clear
       end
     else
-      flash[:error]= "Could not find the user."
+      flash[:error]= ["Could not find the user."]
       @user = User.new( { username: params[:user][:username] } )
       render 'users/sign_in'
     end

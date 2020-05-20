@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+.nav-errors {
+    display: flex;
+    flex-direction: column;
+    justify-self: end;
+    width: 20vw;
+}
+
+.error_explanation {
+    display: flex;
+    font-size: 1.2rem;
+    background-color: red;
+    color: white;
+    size: 15vw;
+}

@@ -19,10 +19,15 @@
           <%= link_to  "Notifications (#{current_user.pending_invitations_count})", users_notifications_path %>
         <% end %>
         <% if !flash[:error].nil? %>
-           <div id="error_explanation">
-             <strong><%= flash[:error] %></strong>
-           </div>
-       <% end %>
+          <nav class="nav-errors">
+            <h4>Some errors appear!!</h4>
+            <% flash[:error].each do |error| %>
+              <div class="error_explanation">
+                <%= error %>
+              </div>
+            <% end %>
+          <% end %>
+        </nav>
         <%= yield %>
       </body>
     </html>
