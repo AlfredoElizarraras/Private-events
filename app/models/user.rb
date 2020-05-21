@@ -30,10 +30,4 @@ class User < ApplicationRecord
   def past_created_events
     events.where('date < now()').order('date desc')
   end
-
-  def pending_invitations_count
-    invitation_hosts.where(status: 'pending')
-    .where('invitations.created_at >= DATE(now())').count
-  end
-
 end

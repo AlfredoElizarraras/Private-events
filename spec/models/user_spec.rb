@@ -95,20 +95,4 @@ RSpec.describe User, type: :model do
       expect(creator.past_created_events.count).to be 1
     end
   end
-
-  context 'User pending invitations' do
-    before do
-      creator.events.push event
-      invitation = Invitation.new
-      invitation.host_id = creator.id
-      invitation.invitee_id = user_1.id
-      invitation.event_id = event.id
-      invitation.status = 'pending'
-      invitation.save
-    end
-
-    it 'show the user the number of invitations he or she has pending' do
-      expect(user_1.pending_invitations_count).to be 1
-    end
-  end
 end
