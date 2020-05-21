@@ -46,7 +46,7 @@ class UsersController < ApplicationController
         visited_event_clear
       end
     else
-      flash[:error]= "Could not find the user."
+      flash.now[:error] = ["Could not find the user."]
       @user = User.new( { username: params[:user][:username] } )
       render 'users/sign_in'
     end
