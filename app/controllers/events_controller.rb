@@ -21,11 +21,7 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
-    @event.date = DateTime.new(@event.date.year,
-                                 @event.date.month,
-                                 @event.date.day,
-                                 params[:date_time].to_s.split(':')[0].to_i,
-                                 params[:date_time].to_s.split(':')[1].to_i,0)
+    @event.date = fill_event_date(@event)
     if @event.save
       redirect_to current_user
     else
@@ -56,6 +52,16 @@ class EventsController < ApplicationController
     else
       render :show
     end
+  end
+
+  private
+
+  def fill_event_date(event)
+    DateTime.new(event.date.year,
+                 event.date.month,
+                 event.date.day,
+                 params[:date_time].to_s.split(':')[0].to_i,
+                 params[:date_time].to_s.split(':')[1].to_i,0)
   end
   
 end
