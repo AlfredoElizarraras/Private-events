@@ -20,14 +20,9 @@ module EventsHelper
     end
 
     def can_see_event?
-      if current_user.nil?
-        return false
+      return true unless@event.accessibility 
 
-      else
-        if current_user.id == @event.creator_id ||
-            @event.user_in_invited_list?(current_user.id) || !@event.accessibility
-            return true
-        end
-      end
-    end
+      (!current_user.nil? && (current_user.id == @event.creator_id || @event.user_in_invited_list?(current_user.id)))? true :false
+    end 
+    
 end
