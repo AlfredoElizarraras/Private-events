@@ -26,6 +26,7 @@ class UsersController < ApplicationController
         visited_event_clear
       end
     else
+      flash.now[:error] = @user.errors.full_messages
       render :new
     end
   end
