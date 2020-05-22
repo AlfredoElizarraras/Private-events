@@ -29,24 +29,24 @@ RSpec.describe User, type: :model do
   end
 
   context 'User relation with Events:' do
-    it "can create many events." do
+    it 'can create many events.' do
       t = User.reflect_on_association(:events)
       expect(t.macro).to eq(:has_many)
     end
 
-    it "can attend many events." do
+    it 'can attend many events.' do
       t = User.reflect_on_association(:attended_events)
       expect(t.macro).to eq(:has_many)
     end
   end
 
   context 'User relation with Invitations:' do
-    it "can invite many invitees." do
+    it 'can invite many invitees.' do
       t = User.reflect_on_association(:invitees)
       expect(t.macro).to eq(:has_many)
     end
 
-    it "can have many hosts that have invited him or her." do
+    it 'can have many hosts that have invited him or her.' do
       t = User.reflect_on_association(:hosts)
       expect(t.macro).to eq(:has_many)
     end
@@ -65,7 +65,7 @@ RSpec.describe User, type: :model do
 
   context 'User past events:' do
     before do
-      event.update(date: "#{Time.now + 5}")
+      event.update(date: (Time.now + 5).to_s)
       creator.events.push event
       user_1.attended_events.push event
     end
@@ -87,7 +87,7 @@ RSpec.describe User, type: :model do
 
   context 'User created past events:' do
     before do
-      event.update(date: "#{Time.now}")
+      event.update(date: Time.now.to_s)
       creator.events.push event
     end
 

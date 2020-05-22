@@ -7,19 +7,19 @@ RSpec.describe Invitation, type: :model do
   let(:user_1) { User.create(username: 'User test 1') }
 
   context 'Invitations relation with Users:' do
-    it "store many invitations for invitees." do
+    it 'store many invitations for invitees.' do
       i = Invitation.reflect_on_association(:invitee)
       expect(i.macro).to eq(:belongs_to)
     end
 
-    it "store many invitations for hosts." do
+    it 'store many invitations for hosts.' do
       i = Invitation.reflect_on_association(:host)
       expect(i.macro).to eq(:belongs_to)
     end
   end
 
   context 'Invitations relation with Events:' do
-    it "store many invitations per event." do
+    it 'store many invitations per event.' do
       i = Invitation.reflect_on_association(:event)
       expect(i.macro).to eq(:belongs_to)
     end

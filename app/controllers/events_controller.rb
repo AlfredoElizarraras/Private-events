@@ -25,7 +25,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to current_user
     else
-      flash[:error] = @event.errors.full_messages   
+      flash[:error] = @event.errors.full_messages
       render :new
     end
   end
@@ -38,9 +38,7 @@ class EventsController < ApplicationController
     else
       @event = Event.find(params[:event][:id])
       register_to_event(@event)
-      if @event.errors.any?
-        flash[:error] = @event.errors.full_messages 
-      end
+      flash[:error] = @event.errors.full_messages if @event.errors.any?
       redirect_to @event
     end
   end
@@ -48,8 +46,8 @@ class EventsController < ApplicationController
   def invite_to_event
     @event = Event.find(params[:event])
     invitee_id = params[:invitee].to_i
-    if Event.add_new_invitation(@event,invitee_id)
-      redirect_to @event 
+    if Event.add_new_invitation(@event, invitee_id)
+      redirect_to @event
     else
       render :show
     end
@@ -64,7 +62,6 @@ class EventsController < ApplicationController
                  event.date.month,
                  event.date.day,
                  params[:date_time].to_s.split(':')[0].to_i,
-                 params[:date_time].to_s.split(':')[1].to_i,0)
+                 params[:date_time].to_s.split(':')[1].to_i, 0)
   end
-  
 end

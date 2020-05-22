@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @previous = @user.past_events
-    @upcoming = @user.upcoming_events 
+    @upcoming = @user.upcoming_events
     @previous_created = @user.past_created_events
-    @upcoming_created = @user.upcoming_created_events 
+    @upcoming_created = @user.upcoming_created_events
   end
 
   def new
@@ -47,8 +47,8 @@ class UsersController < ApplicationController
         visited_event_clear
       end
     else
-      flash.now[:error] = ["Could not find the user."]
-      @user = User.new( { username: params[:user][:username] } )
+      flash.now[:error] = ['Could not find the user.']
+      @user = User.new({ username: params[:user][:username] })
       render 'users/sign_in'
     end
   end
@@ -64,18 +64,17 @@ class UsersController < ApplicationController
 
   def attend_event
     event = current_user.invitation_hosts
-    .where(host_id: params[:host_id])
-    .where(event_id: params[:event_id]).first.event
+      .where(host_id: params[:host_id])
+      .where(event_id: params[:event_id]).first.event
     register_to_event(event)
     redirect_to users_notifications_path
   end
 
   def decline_invitation
     event = current_user.invitation_hosts
-    .where(host_id: params[:host_id])
-    .where(event_id: params[:event_id]).first.event
+      .where(host_id: params[:host_id])
+      .where(event_id: params[:event_id]).first.event
     decline_registration(event)
     redirect_to users_notifications_path
   end
-
 end

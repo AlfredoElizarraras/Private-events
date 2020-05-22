@@ -1,6 +1,7 @@
+# rubocop:disable Metrics/BlockLength
 require 'rails_helper'
 
-RSpec.feature "Users", type: :feature, js: true do
+RSpec.feature 'Users', type: :feature, js: true do
   context 'Sign up for a new user:' do
     scenario 'should be succeful' do
       visit root_path
@@ -68,11 +69,11 @@ RSpec.feature "Users", type: :feature, js: true do
   end
 
   context 'User notifications' do
-    before(:each) do 
+    before(:each) do
       u = User.create(username: 'User 1 test')
       u2 = User.create(username: 'User 2 test')
       e = Event.create(creator_id: u.id, title: 'Event 1', date: Time.now + 100)
-      i = Invitation.create(host_id: u.id, invitee_id: u2.id, event_id: e.id,status: 'pending')
+      Invitation.create(host_id: u.id, invitee_id: u2.id, event_id: e.id, status: 'pending')
     end
 
     scenario 'Users with out notifications.' do
@@ -123,6 +124,6 @@ RSpec.feature "Users", type: :feature, js: true do
       end
       expect(page).to have_content('Notifications (0)')
     end
-
   end
 end
+# rubocop:enable Metrics/BlockLength
