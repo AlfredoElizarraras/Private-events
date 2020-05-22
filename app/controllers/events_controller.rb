@@ -25,6 +25,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to current_user
     else
+      flash[:error] = @event.errors.full_messages   
       render :new
     end
   end
