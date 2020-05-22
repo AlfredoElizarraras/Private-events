@@ -31,7 +31,7 @@ class EventsController < ApplicationController
 
   def attend_to_event
     if current_user.nil?
-      flash[:error] = 'You need to sign in or sign up to register to this event'
+      flash[:error] = ['You need to sign in or sign up to register to this event']
       visited_event_set(params[:event][:id])
       redirect_to users_sign_in_path
     else

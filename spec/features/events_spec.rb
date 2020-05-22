@@ -54,17 +54,12 @@ RSpec.feature "Events", type: :feature, js: true do
   context "can see event details" do
     before(:each) do 
       u = User.create(username: 'User 1 test')
-      visit root_path
-      click_link 'Sign in'
-      within ('form') do
-        fill_in 'user_username', with: 'User 1 test'
-      end
-      click_button 'Sign in'
-      e = Event.create(creator_id: u.id, title: 'Event test', date: Time.now + 1000)
+      e = Event.create(creator_id: u.id, title: 'Event test', date: Time.now + 100000)
     end
     scenario "should be successful" do
       visit root_path
       click_link 'Event test'
+      sleep(2)
       expect(page).to have_content('Event test')
     end
   end
