@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SessionHelper
   def current_user
     User.find(session[:user])

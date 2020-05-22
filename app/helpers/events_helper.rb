@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EventsHelper
   def event_params
     params.require(:event).permit(:date, :description, :title, :location, :accessibility)
