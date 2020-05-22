@@ -57,6 +57,8 @@ class EventsController < ApplicationController
   private
 
   def fill_event_date(event)
+    return nil if event.date.nil?
+
     DateTime.new(event.date.year,
                  event.date.month,
                  event.date.day,
