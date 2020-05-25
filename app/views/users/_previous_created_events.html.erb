@@ -1,7 +1,7 @@
   <h5><%= previous_created? %></h5>
-  <% unless @previous_created.count.zero? %>
+  <% unless @user.past_created_events.count.zero? %>
     <ul>
-    <% @previous_created.each do |event| %>
+    <% @user.past_created_events.each do |event| %>
       <li><%= link_to event.title, event %> </li>
     <% end %>
     </ul>

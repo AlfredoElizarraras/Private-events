@@ -6,19 +6,19 @@ module UsersHelper
   end
 
   def previous_created?
-    @previous_created.count.positive? ? 'Previous: ' : 'No previous events'
+    @user.past_created_events.count.positive? ? 'Previous: ' : 'No previous events'
   end
 
   def upcoming_created?
-    @upcoming_created.count.positive? ? 'Upcoming: ' : 'No upcomming events'
+    @user.upcoming_created_events.count.positive? ? 'Upcoming: ' : 'No upcomming events'
   end
 
   def previous?
-    @previous.count.positive? ? 'Previous: ' : 'No previous events'
+    @user.past_events.count.positive? ? 'Previous: ' : 'No previous events'
   end
 
   def upcoming?
-    @upcoming.count.positive? ? 'Upcoming: ' : 'No upcomming events'
+    @user.upcoming_events.count.positive? ? 'Upcoming: ' : 'No upcomming events'
   end
 
   def user_name_in_title
