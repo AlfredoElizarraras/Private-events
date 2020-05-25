@@ -1,0 +1,20 @@
+<h1>Your pending events invitations</h1>
+
+<ul>
+<% @pending.each do |invitation| %>
+    <li>
+    <% id = invitation.event_id %>
+    <%= link_to  invitation.title, event_path(id) %>
+    from <%= link_to  invitation.creator, user_path(invitation.creator_id) %> - 
+    <%= link_to 'Accept', users_attend_event_path(event_id: invitation.event_id, host_id: invitation.creator_id), method: :attend_event,
+    data: { 
+        confirm: "Sure to attend #{invitation.title}"
+    } %>
+    <%= link_to 'Decline', users_decline_invitation_path(event_id: invitation.event_id, host_id: invitation.creator_id), method: :decline_invitation,
+    data: { 
+        confirm: "Sure to decline #{invitation.title}"
+    } %>
+
+    </li>
+<% end %>
+</ul> 
