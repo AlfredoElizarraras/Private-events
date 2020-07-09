@@ -1,7 +1,26 @@
-# Private Events
+<h1 align="center">
+  Private Events
+</h1>
 
-> This project is completed by Carlos Santamaría and Oscar Alfredo Gómez Elizarrarás, in partial requirements of the Microverse cirriculum.
+## Table of Contents
 
+* [About the Project](#about-the-project)
+* [App Diagram](#app-diagram)
+* [Built With](#built-with)
+* [Prerequisites](#prerequisites)
+* [Install](#install)
+* [Authors](#authors)
+* [Contributing](#contributing)
+* [Acknowledgments](#acknowledgments)
+* [License](#license)
+
+## About the project
+
+> This application lets the users create new events, attend it, and invite other users to their own. 
+
+---
+
+## App Diagram
 ![Screenshot - 1920 x 1080 ](/assets/private-events-diagram.jpg?raw=true "App diagram")
 
 ---
@@ -13,29 +32,33 @@
 - Rspec 3.9
 ---
 
-### Prerequisites
+## Prerequisites
 
 - Ruby 2.7.1
 - postgresql 10.12
 
 
-### Install
+## Install
 
-`git clone https://github.com/AlfredoElizarraras/Private-events.git'
+`git clone https://github.com/AlfredoElizarraras/Private-events.git`
 
-#### On command line:
+### On the command line:
 - `sudo -u postgres psql`
 - `CREATE ROLE events WITH CREATEDB LOGIN PASSWORD 'pass123';`
 - `Exit postgres console \q`
 - `Make sure you have your yarn packages up to date. If not:`
 - `yarn install --check-files`
-##### For running the test you will need to install capybara web kit before the bundle
+
+### Before testing
+(For running the test you will need to install capybara web kit before the bundle)
 - `sudo apt-get update`
 - `sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x`
 - `bundler install`
 - `rails db:setup`
 
 ## Authors
+
+> This project is completed by Carlos Santamaría and Oscar Alfredo Gómez Elizarrarás, in partial requirements of the Microverse cirriculum.
 
 👤 **Carlos Santamaria**
 
@@ -51,7 +74,7 @@
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, issues and feature requests are welcome!
 
@@ -68,7 +91,7 @@ Give a ⭐️ if you like this project!
 
 ---
 
-## 📝 License
+## License
 
 This project is [MIT](https://github.com/AlfredoElizarraras/Private-events/blob/master/LICENSE) licensed.
 
