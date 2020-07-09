@@ -42,14 +42,14 @@
 
 `git clone https://github.com/AlfredoElizarraras/Private-events.git`
 
-### On the command line:
+> On the command line:
 - `sudo -u postgres psql`
 - `CREATE ROLE events WITH CREATEDB LOGIN PASSWORD 'pass123';`
 - `Exit postgres console \q`
 - `Make sure you have your yarn packages up to date. If not:`
 - `yarn install --check-files`
 
-### Before testing
+> Before testing
 (For running the test you will need to install capybara web kit before the bundle)
 - `sudo apt-get update`
 - `sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x`
